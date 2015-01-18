@@ -10,7 +10,9 @@ $(BIN):
 
 launch:$(BIN)
 	sudo ./stlink/st-util&
-	arm-eabi-gdb $(BIN)
+	echo -e "target remote:4242 \n load" > conf.gdb
+	arm-eabi-gdb $(BIN) -x conf.gdb
+	rm conf.gdb
 
 clean:
 	@rm -rf *~ *\#
