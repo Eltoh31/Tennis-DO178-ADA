@@ -1,7 +1,7 @@
 with  Screen_Interface; use Screen_Interface;
 
-procedure Base is 
+procedure Tennis is 
 begin
    Screen_Interface.Initialize;
-end Base;
+end Tennis;
   

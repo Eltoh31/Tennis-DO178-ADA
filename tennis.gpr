@@ -1,12 +1,12 @@
 project Tennis is 
 
 for Languages use ("Ada");
-for Main use ("base.adb");
+for Main use ("tennis.adb");
 for Source_Dirs use (".", "stm32f4");
 for Object_Dir use "obj";
-   for Exec_Dir use "obj";
-   for Target use "arm-eabi";
-   -- for Runtime ("Ada") use "ravenscar-sfp-stm32f4";
+for Exec_Dir use "obj";
+for Target use "arm-eabi";
+-- for Runtime ("Ada") use "ravenscar-sfp-stm32f4";
 
    package Compiler is
       for Default_Switches ("ada") use ("-g", "-gnatwa", "-gnatQ", "-gnatw.X");
