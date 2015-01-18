@@ -9,6 +9,7 @@ $(BIN):
 	@mv obj/$(BIN) .
 
 launch:$(BIN)
+	sudo ./stlink/st-util&
 	arm-eabi-gdb $(BIN)
 
 clean:
