@@ -6,14 +6,14 @@ all:$(BIN)
 
 $(BIN):
 	$(BUILD) -P $(CONF) --RTS=./tools/ravenscar-sfp-stm32f4 -XLOADER=RAM
-	@mv obj/$(BIN) .
+
 
 launch:$(BIN)
 	echo "target remote:4242" > conf.gdb
-	arm-eabi-gdb $(BIN) -x conf.gdb
+	arm-eabi-gdb obj/$(BIN) -x conf.gdb
 
 clean:
 	@rm -rf *~ *\#
-	@mv $(BIN) obj
+	@cd src && rm -rf *~ *\#
 	@rm -rf conf.gdb
 	@gprclean $(BIN)
