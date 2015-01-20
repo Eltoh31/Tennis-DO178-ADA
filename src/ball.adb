@@ -17,22 +17,22 @@ package body Ball is
       -------------------- Collisions murs --------------------
       if (Next_W_Pos < Width'First) then 
 	 null;
-      else if (Next_W_Pos > Width'Last) then 
+      elsif (Next_W_Pos > Width'Last) then 
 	 null;
-      else if (Next_H_Pos < Heigh'First) then
+      elsif (Next_H_Pos < Height'First) then
 	 null;
-      else if (Next_H_Pos > Heigh'Last) then
+      elsif (Next_H_Pos > Height'Last) then
 	 null;
       ----------Collisions avec  player 1---------------------
-      else if (Next_W_Pos = P1.Position_W) then
+--      elsif (Next_W_Pos = P1.Position_W) then
 	 null;
-      else if (Next_H_Pos = P1.Position_H) then	
+--      elsif (Next_H_Pos = P1.Position_H) then	
 	 null; 
       ----------Collisions avec player 2---------------------
-      else if (Next_W_Pos = P2.Position_W) then
+--      elsif (Next_W_Pos = P2.Position_W) then
 	 null;
-      else if (Next_H_Pos = P2.Position_H) then	
-	 null;	 
+--      elsif (Next_H_Pos = P2.Position_H) then	
+	 	 null;	 
       ------------ Autre ------------------------------------
       else
 	 null;
