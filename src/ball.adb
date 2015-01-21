@@ -15,6 +15,7 @@ package body Ball is
  --  begin
       
       -------------------- Collisions murs --------------------
+
  --     if (Next_W_Pos < Width'First) then 
 --	 null;
 --      elsif (Next_W_Pos > Width'Last) then 
