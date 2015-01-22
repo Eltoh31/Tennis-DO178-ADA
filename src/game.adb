@@ -13,6 +13,7 @@ package body Game is
       Mid_Width, Mid_Height : Integer;   
    begin
       ------------- Ligne blanche separant les deux parties du court de tennis ------------------
+      Screen_Interface.Fill_Screen(Green);
       for X in Width'First .. Width'Last loop
 	 Set_Pixel ((X, (Height'Last - Height'First) / 2), White);
       end loop;
