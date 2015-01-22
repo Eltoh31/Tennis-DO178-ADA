@@ -1,5 +1,5 @@
 with Screen_Interface; use Screen_Interface;
---with Player; use Player;
+with Player; use Player;
 
 
 package Ball is   
@@ -8,7 +8,7 @@ package Ball is
    
    procedure Init(B:in out T_Ball; W: in Natural; H:in Natural; C: in Color; D_W: in Natural; D_H: in Natural);
 
---   procedure Colision(B:in T_Ball; P1: in T_Player; P2: in T_Player);
+   procedure Colision(B:in T_Ball; P1: in T_Player; P2: in T_Player);
    procedure Set_Direction(B:in T_Ball; D_W: in Natural; D_H: in Natural); 
    procedure Draw(B:in T_Ball);
    function Get_WPos(B:in T_Ball) return Natural;

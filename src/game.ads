@@ -4,9 +4,10 @@ with Ball;use Ball;
 
 package Game is
    type T_Game is limited private;
-   procedure Init(G:in out T_Game);
+   procedure Init_Screen;
+   procedure Init_Game(G:in out T_Game);
+   procedure Draw_Menu;
    procedure Game_Loop(G:in out T_Game);
-   
 private 
       type T_Game is
       record

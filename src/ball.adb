@@ -9,37 +9,37 @@ package body Ball is
       B.Radius := 1;
    end Init;
    ------------------------------ Prediction du mouvement de la  balle -------------------
---   procedure Colision(B:in T_Ball; P1: in T_Player; P2: in T_Player) is
---      Next_W_Pos :constant Integer := B.Position_W + B.Radius + B.Direction_W;
---      Next_H_Pos :constant Integer := B.Position_H + B.Radius + B.Direction_H;
- --  begin
+   procedure Colision(B:in T_Ball; P1: in T_Player; P2: in T_Player) is
+      Next_W_Pos :constant Integer := B.Position_W + B.Radius + B.Direction_W;
+      Next_H_Pos :constant Integer := B.Position_H + B.Radius + B.Direction_H;
+   begin
       
       -------------------- Collisions murs --------------------
 
- --     if (Next_W_Pos < Width'First) then 
---	 null;
---      elsif (Next_W_Pos > Width'Last) then 
---	 null;
---      elsif (Next_H_Pos < Height'First) then
---	 null;
---     elsif (Next_H_Pos > Height'Last) then
---	 null;
-      ----------Collisions avec  player 1---------------------
-      --elsif (Next_W_Pos = P1.Position_W) then
---	 null;
---      elsif (Next_H_Pos = P1.Position_H) then	
---	 null; 
+      if (Next_W_Pos < Width'First) then 
+	 null;
+      elsif (Next_W_Pos > Width'Last) then 
+	 null;
+      elsif (Next_H_Pos < Height'First) then
+	 null;
+     elsif (Next_H_Pos > Height'Last) then
+	 null;
+     ----------Collisions avec  player 1---------------------
+      elsif (Next_W_Pos = Get_WPos(P1)) then
+	 null;
+       elsif (Next_H_Pos = Get_HPos(P1)) then	
+ 	 null; 
       ----------Collisions avec player 2---------------------
---      elsif (Next_W_Pos = P2.Position_W) then
---	 null;
---      elsif (Next_H_Pos = P2.Position_H) then	
---	 null;	 
-      ------------ Autre ------------------------------------
---      else
---	 null;
---      end if;
-	   
---   end Colision;
+       elsif (Next_W_Pos = Get_WPos(P2)) then
+ 	 null;
+       elsif (Next_H_Pos = Get_HPos(P2)) then	
+ 	 null;	 
+	 ------------ Autre ------------------------------------
+      else
+	 null;
+      end if;
+      
+   end Colision;
    
 
    -- Pour changer le sens de la balle a voir si un angle conviens pas mieux que deux coord -----

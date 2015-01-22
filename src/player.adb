@@ -11,6 +11,7 @@ package body Player is
       Mid_Width: constant Natural := (Width'Last - Width'First) / 2;
    begin 
       for Y in (P.Position_W - Mid_Width/4 ).. (P.Position_W + Mid_Width/4) loop
+	 
 	 Set_Pixel ((Y, P.Position_H + 2), P.Colour);
 	 Set_Pixel ((Y, P.Position_H + 3), P.Colour);
 	 Set_Pixel ((Y, P.Position_H + 4), P.Colour);   
