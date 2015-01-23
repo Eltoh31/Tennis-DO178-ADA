@@ -14,7 +14,8 @@ package body Player is
       State          : Touch_State;
       BarWidth       : Natural       := 10;
       BarSize        : Natural       := (Width'Last - Width'First)/4;
-      FieldSide      : Natural       := 12;
+      Fs             : T_FieldSide;
+      Is_In_Fs       : Boolean       :=False;
    begin
       loop
          State := Get_Touch_State;
@@ -22,16 +23,32 @@ package body Player is
            then (State.X /= Last_X or State.Y /= Last_Y);
       end loop;
       ----------------------------PLAYER RED
-      if  (State.Y < ((Height'Last-Height'First)/2)-40) then
+      for I in T_FieldSide'Range loop
+         if I < (Height'First+Height'Last)/2 then
+            Fs(I) := 1 ;
+         else
+            Fs(I) := 2;
+         end if;
+      end loop;
          --DRAW BAR
+      if ((P.ID = 1 and then Fs(State.Y) =1) or else  (P.ID = 2 and then Fs(State.Y) =2)) then
          Last_Y := State.Y;
          Last_X := State.X;
          for I in 1..BarWidth loop
-            Set_Pixel ((Last_X, I), Red);
+            if (P.ID = 1) then
+               Set_Pixel ((Last_X, I), P.Colour);
+            else
+               Set_Pixel ((Last_X, Height'Last-I), P.Colour);
+            end if;
             for N in 1..BarSize loop
                if Last_X+N < Width'Last and Last_X-N > Width'First then
-                  Set_Pixel ((Last_X+N, I), Red);
-                  Set_Pixel ((Last_X-N, I), Red);
+                  if (P.ID = 1) then
+                     Set_Pixel ((Last_X+N, I), P.Colour);
+                     Set_Pixel ((Last_X-N, I), P.Colour);
+                  else
+                     Set_Pixel ((Last_X+N, Height'Last-I), P.Colour);
+                     Set_Pixel ((Last_X-N, Height'Last-I), P.Colour);
+                  end if;
                end if;
             end loop;
          end loop;
@@ -39,35 +56,15 @@ package body Player is
          for K in Width'First..Width'Last loop
             if ((K < Last_X-(BarSize/2)) or (K >  Last_X+(BarSize/2))) then
                for R in 1..BarWidth loop
-                  Set_Pixel ((K, R), Green);
+                  if (P.ID = 1) then
+                     Set_Pixel ((K, R), Green);
+                  else
+                     Set_Pixel ((K, Height'Last-R), Green);
+                  end if;
                end loop;
             end if;
          end loop;
       end if;
-      ------------------------------------
-      ------------------------ PLAYER BLUE
-      --Draw Blue
-      Last_Y := State.Y;
-      Last_X := State.X;
-      if  (State.Y >= ((Height'Last-Height'First)/2)+40) then
-         for J in 1..BarWidth loop
-            Set_Pixel ((Last_X, Height'Last-J), Blue);
-            for M in 1..BarSize loop
-               if Last_X+M < Width'Last and Last_X-M > Width'First then
-                  Set_Pixel ((Last_X+M, Height'Last-J), Blue);
-                  Set_Pixel ((Last_X-M, Height'Last-J), Blue);
-                  ---------------------------------------
-               end if;
-            end loop;
-         end loop;
-            for K in Width'First..Width'Last loop
-               if ((K < Last_X-(BarSize/2)) or (K >  Last_X+(BarSize/2))) then
-                  for R in 1..BarWidth loop
-                     Set_Pixel ((K, Height'Last-R), Green);
-                  end loop;
-               end if;
-            end loop;
-         end if;
    end Draw;
 
    function Is_Wining(P:in T_Player) return Integer is
