@@ -1,10 +1,10 @@
 with Screen_Interface; use Screen_Interface;
 package Player is
-   
-   type T_Player is limited private;
-   
 
-   procedure Init(P:in out T_Player; W: in Natural; H:in Natural; C: in Color);
+   type T_Player is limited private;
+
+
+   procedure Init(P:in out T_Player; W: in Natural; H:in Natural; C: in Color; ID: in Integer);
    procedure Draw(P:in T_Player);
    function Is_Wining(P:in T_Player) return Integer;
    procedure Equals(P:in out T_Player; P_Aux: in T_Player);
@@ -14,9 +14,9 @@ package Player is
    procedure Set_WPos(P:in out T_Player; Wpos:in Natural);
    procedure Set_HPos(P:in out T_Player; Hpos:in Natural);
    procedure Set_Score(P:in out T_Player; Score:in Natural);
-   
 
-   
+
+
 private
    type T_Player is
       record
@@ -24,7 +24,7 @@ private
 	 Position_H: Natural := 0;
 	 Colour: Color := White;
 	 Score: Natural := 0;
-    end record;
+         ID: Integer :=0;
+      end record;
 
-end Player;	
-    
+end Player;
