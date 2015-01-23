@@ -5,8 +5,6 @@ package body Game is
    begin
       Screen_Interface.Initialize;
       ------------- Fond d'ecran -----------------------
-      Screen_Interface.Fill_Screen(Black);
-
    end Init_Screen;
 
    procedure Init_Game(G:in out T_Game) is
@@ -39,7 +37,8 @@ package body Game is
 	 Colision(G.Ball, P1, P2);
 	 Draw(G.Player1);
 	 Draw(G.Player2);
-	 --  Clear(B);
+	 Draw_Score(G.Player1);
+	 Draw_Score(G.Player2);
 	 Draw(G.Ball);
       end loop;
    end Game_Loop;
@@ -53,7 +52,7 @@ package body Game is
 
       Mid_Width := (Width'Last - Width'First) / 2;
       Mid_Height := (Height'Last - Height'First) / 2;
-
+      Screen_Interface.Fill_Screen(Black);
       ---------------------------- N ------------------------
       for Y in (Mid_Width + Mid_Width / 4).. (Mid_Width + 3 * Mid_Width/4) loop
 	 Set_Pixel ((Y, Height'First + 2), White);

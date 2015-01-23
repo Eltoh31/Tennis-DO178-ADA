@@ -62,7 +62,32 @@ package body Player is
          end loop;
       end if;
    end Draw;
+   
+   procedure Draw_Score(P:in T_Player) is
+      Mid_Width, Mid_Height : Integer;   
+   begin
+      Mid_Width := (Width'Last - Width'First) / 2;
+      Mid_Height := (Height'Last - Height'First) / 2;
 
+      for Y in 225 .. 235 loop
+	 if (P.ID = 1) then
+	   for I in 1 .. P.Score loop
+	   Set_Pixel ((Y, Height'First + I * 10), Black);
+	   end loop;
+	   for I in P.Score .. 7 loop
+	   Set_Pixel ((Y, Height'First + 10 + 10 * I), White);
+	   end loop;
+	 else
+	    for I in 1 .. P.Score loop
+	       Set_Pixel ((Y, Height'Last  + I * 10 - 140), Black);
+	    end loop;
+	    for I in P.Score .. 7 loop
+	       Set_Pixel ((Y, Height'Last - 140  + I * 10), White);
+	    end loop;
+	 end if;   
+      end loop;
+   end Draw_Score;
+   
    function Is_Wining(P:in T_Player) return Integer is
    begin
       if (P.Score = 7) then

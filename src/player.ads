@@ -6,6 +6,7 @@ package Player is
 
    procedure Init(P:in out T_Player; W: in Natural; H:in Natural; C: in Color; ID: in Integer);
    procedure Draw(P:in T_Player);
+   procedure Draw_Score(P:in T_Player);
    function Is_Wining(P:in T_Player) return Integer;
    procedure Equals(P:in out T_Player; P_Aux: in T_Player);
    function Get_WPos(P:in T_Player) return Natural;
@@ -14,6 +15,7 @@ package Player is
    procedure Set_WPos(P:in out T_Player; Wpos:in Natural);
    procedure Set_HPos(P:in out T_Player; Hpos:in Natural);
    procedure Set_Score(P:in out T_Player; Score:in Natural);
+   
    type T_FieldSide is array(Integer range Height'First..Height'Last) of Integer;
 
 private

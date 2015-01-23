@@ -38,7 +38,7 @@ package body Ball is
 	    B.Direction_H := -4;
 	    B.Direction_W := 0;
  	 else
-	    Set_Score(P2, Get_Score(P2) + 1);
+	    Set_Score(P2, 7);-- Get_Score(P2) + 1);
 	    B.Direction_H := 4;
 	    B.Direction_W := 0;
 	 end if;
@@ -52,7 +52,7 @@ package body Ball is
 	 B.Position_H :=  Mid_Height;
 	 B.Position_W :=  Mid_Width;
 	 B.Direction_H := 4;
-	 B.Direction_H := 0;
+	 B.Direction_W := 0;
       elsif (Next_H_Pos > Height'Last - 5) then
 	 -- Balle sort derriere un player (P2)
 	 Set_Score(P1, Get_Score(P1) + 1);
