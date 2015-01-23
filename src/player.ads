@@ -14,8 +14,7 @@ package Player is
    procedure Set_WPos(P:in out T_Player; Wpos:in Natural);
    procedure Set_HPos(P:in out T_Player; Hpos:in Natural);
    procedure Set_Score(P:in out T_Player; Score:in Natural);
-
-
+   type T_FieldSide is array(Integer range Height'First..Height'Last) of Integer;
 
 private
    type T_Player is
