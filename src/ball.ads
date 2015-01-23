@@ -16,7 +16,6 @@ package Ball is
    function Get_HPos(B:in T_Ball) return Natural;
    function Get_WDir(B:in T_Ball) return Integer;   
    function Get_HDir(B:in T_Ball) return Integer;
-   function Get_Radius(B:in T_Ball) return Natural;
    procedure Set_WPos(B:in out T_Ball; Wpos:in Natural);
    procedure Set_HPos(B:in out T_Ball; Hpos:in Natural);
    procedure Set_WDir(B:in out T_Ball; Wdir:in Integer);   
@@ -30,7 +29,7 @@ private
 	 Direction_W: Integer := 0;
 	 Direction_H: Integer := 0;
 	 Colour: Color := White;
-	 Radius: Natural := 0;
+	 Last_Player: Natural := 1;
       end record;
    
 end Ball;
