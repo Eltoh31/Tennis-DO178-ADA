@@ -24,7 +24,7 @@ package body Game is
       Init(G.Player1, Mid_Width, Height'First, Red);
       ------------ Une barre pour joueur 2 -----------------------------
       Init(G.Player2, Mid_Width, Height'Last -8, Blue);
-      Init(G.Ball, Mid_Width, Mid_Height, Violet, 1, 1);
+      Init(G.Ball, Mid_Width, Mid_Height, Violet, 1, 0);
       -------------------- DRaw des players -----------------------------
       Draw(G.Player1);
       Draw(G.Player2);
@@ -39,9 +39,9 @@ package body Game is
       Equals(P2, G.Player2);
       while (Is_Wining(P1) = 0 and then Is_Wining(P2) = 0) loop
 	 Colision(G.Ball, P1, P2);
-	  Draw(G.Player1);
-	  Draw(G.Player2);
-	  Draw(G.Ball);
+	 Draw(G.Player1);
+	 Draw(G.Player2);
+	 Draw(G.Ball);
       end loop;
    end Game_Loop;
    

@@ -14,7 +14,7 @@ package Player is
    procedure Set_WPos(P:in out T_Player; Wpos:in Natural);
    procedure Set_HPos(P:in out T_Player; Hpos:in Natural);
    procedure Set_Score(P:in out T_Player; Score:in Natural);
-   
+
 
    
 private

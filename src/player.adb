@@ -4,8 +4,9 @@ package body Player is
       P.Position_W := W;
       P.Position_H := H;
       P.Colour := C;
-      P.Score := 0;      
+      P.Score := 0;         
    end Init;
+   
    
    procedure Draw(P: in T_Player) is 
       Mid_Width: constant Natural := (Width'Last - Width'First) / 2;
