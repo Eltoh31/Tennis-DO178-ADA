@@ -25,8 +25,8 @@ package body Game is
       Draw(G.Ball);
    end Init_Game;
 
-   
-   
+
+
    procedure Game_Loop(G:in out T_Game) is
       P1: T_Player;
       P2: T_Player;
@@ -39,13 +39,13 @@ package body Game is
 	 Colision(G.Ball, P1, P2);
 	 Draw(G.Player1);
 	 Draw(G.Player2);
-	 Clear(B);
+	 --  Clear(B);
 	 Draw(G.Ball);
       end loop;
    end Game_Loop;
 
-   
-   
+
+
    procedure Draw_Menu is
       Mid_Width, Mid_Height : Integer;
       I:Integer := 0;

@@ -17,11 +17,7 @@ package body Player is
       Fs             : T_FieldSide;
       Is_In_Fs       : Boolean       :=False;
    begin
-      loop
          State := Get_Touch_State;
-         exit when State.Touch_Detected and
-           then (State.X /= Last_X or State.Y /= Last_Y);
-      end loop;
       ----------------------------PLAYER RED
       for I in T_FieldSide'Range loop
          if I < (Height'First+Height'Last)/2 then
