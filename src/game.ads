@@ -7,6 +7,7 @@ package Game is
    procedure Init_Screen;
    procedure Init_Game(G:in out T_Game);
    procedure Draw_Menu;
+   procedure Draw_Winner(G:in T_Game);
    procedure Game_Loop(G:in out T_Game);
 private 
       type T_Game is

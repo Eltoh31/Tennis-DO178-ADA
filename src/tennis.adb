@@ -11,6 +11,7 @@ begin
    end loop;
    Init_Game(Game);
    Game_Loop(Game);
+   Draw_Winner(Game);
    
 
 end Tennis;

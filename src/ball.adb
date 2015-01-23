@@ -9,7 +9,7 @@ package body Ball is
       B.Radius := 1;
    end Init;
    ------------------------------ Prediction du mouvement de la  balle -------------------
-   procedure Colision(B:in T_Ball; P1: in T_Player; P2: in T_Player) is
+   procedure Colision(B:in out T_Ball; P1: in T_Player; P2: in T_Player) is
       Next_W_Pos :constant Integer := B.Position_W + B.Radius + B.Direction_W;
       Next_H_Pos :constant Integer := B.Position_H + B.Radius + B.Direction_H;
    begin
