@@ -6,7 +6,7 @@ package body Ball is
       B.Direction_W := D_W;
       B.Direction_H := D_H;
       B.Colour := C;
-      B.Radius := 1;
+      B.Last_Player := 1;
    end Init;
    ------------------------------ Prediction du mouvement de la  balle -------------------
    procedure Colision(B:in out T_Ball; P1: in out T_Player; P2: in out T_Player) is
@@ -19,19 +19,31 @@ package body Ball is
       -------------------- Collisions murs --------------------
       if (Next_W_Pos < Width'First) then 
 	 -- Balle sort sur un côté (en bas)
-	 -- Set_Score(, Get_Score() + 1);
-	 -- Replacer la balle qui doit partir vers perdant
+	 if (B.Last_Player = 1) then 
+	    Set_Score(P1, Get_Score(P1) + 1);
+	    B.Direction_H := -4;
+	    B.Direction_W := 0; 
+ 	 else
+	    Set_Score(P2, Get_Score(P2) + 1);
+	    B.Direction_H := 4;
+	    B.Direction_W := 0; 
+	 end if;
+	  -- Replacer la balle qui doit partir vers perdant
 	 B.Position_H :=  Mid_Height;
 	 B.Position_W :=  Mid_Width;
-	 B.Colour:= White;
-	 null;
-      elsif (Next_W_Pos > Width'Last) then 
-	  B.Position_H :=  Mid_Height;
-	  B.Position_W :=  Mid_Width;
-	  B.Colour := Black;
-	 null;
 	 -- Balle sort sur un côté (en haut)
-	 -- Set_Score(, Get_Score() + 1);
+      elsif (Next_W_Pos > Width'Last) then 
+	 if (B.Last_Player = 1) then 
+	    Set_Score(P1, Get_Score(P1) + 1);
+	    B.Direction_H := -4;
+	    B.Direction_W := 0; 
+ 	 else
+	    Set_Score(P2, Get_Score(P2) + 1);
+	    B.Direction_H := 4;
+	    B.Direction_W := 0; 
+	 end if;
+	 B.Position_H :=  Mid_Height;
+	 B.Position_W :=  Mid_Width;
 	 -- Replacer la balle qui doit partir vers perdant
       elsif (Next_H_Pos < Height'First + 5) then
 	 -- Balle sort derriere un player (P1)
@@ -39,7 +51,6 @@ package body Ball is
 	 -- Replacer la balle qui doit partir vers P1
 	 B.Position_H :=  Mid_Height;
 	 B.Position_W :=  Mid_Width;
-	 B.Colour:= Red;
 	 B.Direction_H := 4;
 	 B.Direction_H := 0;
       elsif (Next_H_Pos > Height'Last - 5) then
@@ -49,7 +60,7 @@ package body Ball is
 	 B.Position_H :=  Mid_Height;
 	 B.Position_W :=  Mid_Width;
 	 B.Direction_H := -4;
-	 B.Direction_W := 0;
+	 B.Direction_W := 0; 
      ----------Collisions avec  player 1---------------------
      -- elsif (Next_W_Pos = Get_WPos(P1)) then
 --	 null;
@@ -118,12 +129,7 @@ package body Ball is
    begin
       return B.Direction_H; 
    end Get_HDir;
-   
-   function Get_Radius(B:in T_Ball) return Natural is
-   begin 
-      return B.Radius; 
-   end Get_Radius;
-   
+      
    procedure Set_WPos(B:in out T_Ball; Wpos:in Natural)is 
    begin 
       B.Position_W := Wpos;
@@ -150,7 +156,7 @@ package body Ball is
       B.Direction_W := B_Aux.Direction_W;
       B.Direction_H := B_Aux.Direction_H;
       B.Colour := B_Aux.Colour;
-      B.Radius := B_Aux.Radius;
+      B.Last_Player := B_Aux.Last_Player;
    end Equals; 
    
 end Ball;
